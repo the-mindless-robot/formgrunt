@@ -38,6 +38,12 @@ class FormGrunt {
         return inputList;
     }
 
+    updateInputs() {
+        // update any new imputs
+        this.inputs = document.querySelectorAll(this.inputClass);
+        this.inputList = this._initInputs(this.inputs);
+    }
+
     _addToCount(type) {
         if(this.inputCountByType.hasOwnProperty(type)) {
             this.inputCountByType[type] += 1;
@@ -63,6 +69,20 @@ class FormGrunt {
         }
 
         return allValues;
+    }
+
+    getInputValue(lookup, stringFormat = false) {
+        const input = this.inputList[lookup];
+        const inputValue = stringFormat ? this._getInputValue(input, true) : this._getInputValue(input);
+        return inputValue;
+    }
+
+    getInputLookup(elem) {
+        return elem.closest(this.inputClass).dataset.lookup;
+    }
+
+    getInputParentElem(elem) {
+        return elem.closest(this.inputClass);
     }
 
     _getInputValue(input, stringFormat = false) {
