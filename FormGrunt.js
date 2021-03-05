@@ -40,7 +40,9 @@ class FormGrunt {
 
     updateInputs() {
         // update any new imputs
+        this.inputs = '';
         this.inputs = document.querySelectorAll(this.inputClass);
+        this.inputList = '';
         this.inputList = this._initInputs(this.inputs);
     }
 
