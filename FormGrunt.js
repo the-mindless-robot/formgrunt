@@ -127,7 +127,10 @@ class FormGrunt {
         }
 
         if(checkbox.checked) {
-            return checkbox.value || true;
+            if(checkbox.value === "on") {
+                return true;
+            }
+            return checkbox.value;
         }
 
         return false;
