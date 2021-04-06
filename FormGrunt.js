@@ -40,9 +40,7 @@ class FormGrunt {
 
     updateInputs() {
         // update any new imputs
-        this.inputs = '';
         this.inputs = document.querySelectorAll(this.inputClass);
-        this.inputList = '';
         this.inputList = this._initInputs(this.inputs);
     }
 
@@ -112,9 +110,27 @@ class FormGrunt {
             return inputValue;
         }
 
+        if (type == 'checkbox') {
+            inputValue = this._getCheckboxValue(input.elem);
+            return inputValue;
+        }
+
 
         return 'invalid type';
 
+    }
+
+    _getCheckboxValue(elem) {
+        let checkbox = elem;
+        if(elem.nodeName !== "INPUT") {
+            checkbox = elem.querySelector('input[type="checkbox"]');
+        }
+
+        if(checkbox.checked) {
+            return checkbox.value || true;
+        }
+
+        return false;
     }
 
     _getSelectedRadioValue(elem) {
