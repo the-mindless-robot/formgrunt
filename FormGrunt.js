@@ -112,6 +112,9 @@ class FormGrunt {
 
         if (type == 'checkbox') {
             inputValue = this._getCheckboxValue(input.elem);
+            if(stringFormat) {
+                return inputValue ? "Yes" : "No";
+            }
             return inputValue;
         }
 
